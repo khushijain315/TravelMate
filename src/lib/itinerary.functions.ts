@@ -43,7 +43,7 @@ export const generateItinerary = createServerFn({ method: "POST" })
 
     try {
       const result = streamText({
-        model: google("gemini-2.5-flash"),
+        model: google("gemini-3-flash-preview"),
         system:
           "You are an expert travel planner. Write in Markdown. Start with a one-line intro. Then for each day use a heading '## Day N — theme'. Within each day, use separate subheadings '### Morning', '### Afternoon', and '### Evening'. Under EACH subheading, give 2–3 short, separate bullet points for the important activities, dining, or transport. Never write a paragraph or combine the whole time period into one long bullet. Every bullet must follow this format: '- **Activity or place** — one short practical detail. **Estimated cost: LOCAL_CURRENCY amount or range per person**'. Use specific real places, include dining suggestions and short transport tips, and show 'Estimated cost: Free' for genuinely free activities. Use the destination's local currency with an unambiguous currency code; explicitly identify costs charged per vehicle or per group instead of per person when appropriate. Costs are approximate, not live prices; add one brief note that estimates vary and should be checked before booking. End with '## Where to stay' and '## Tips'. Be concise and practical. Do not include a top-level title.",
         prompt: `Plan a ${data.days}-day trip to ${data.location} for ${who}. Tailor the pace and suggestions to this type of traveler.`,

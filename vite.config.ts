@@ -11,6 +11,6 @@ export default defineConfig({
     tsconfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({ server: { entry: "server" } }),
     react(),
-    nitro({ preset: "node_server" }),
+    nitro(),
   ],
 });
